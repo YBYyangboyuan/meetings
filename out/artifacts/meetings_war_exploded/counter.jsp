@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*" %>
+<%@ page import="com.HelloClient" %>
+<%@ page import="com.Itest" %>
+<%@ page import="java.rmi.RemoteException" %>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -184,6 +190,231 @@
 
         <!--</div>-->
         <!--</div>-->
+        <%
+            HelloClient hc = new HelloClient();
+            Itest it=new Itest() {
+                @Override
+                public int addvisit() throws RemoteException {
+                    return 0;
+                }
+
+                @Override
+                public boolean regist(String name, String telephone, String email, String position, int departmentid, String username, String password) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean regist(String jsonString) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public String login(String name, String password) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String login(String jsonString) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public boolean refuse_regisiton(int EmployeeCopyid) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean recover_regisiton(int EmployeeCopyid) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean passregistion(int EmployeeCopyid) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public String showregistall(int status) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String showpassedall() throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public boolean deletestaff(int staffid) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean deletestaffcopy(int staffid) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean delete_personal_book_meeting(int meetingid) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public String searchstaffbyname(String staff_name) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String searchstaffbyusername(String staff_name) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String searchstaffbydepartment(int departmentid) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String searchstaffbydepartment() throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String searchstaff(String jsonString) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String searchMeeting(String jsonString) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String searchMeeting(Map<String, Object> map) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String searchMeeting(String meeting_name, String meeting_notes, String book_name, int people_num, int meetingroom_id, int status, String start_time, String end_time) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public void add_department(String departmentname) throws RemoteException {
+
+                }
+
+                @Override
+                public boolean modify_department(int departmentid, String modifyname) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean modify_department(String jsonString) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean delect_department(int departmentid) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public String show_department() throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public boolean add_meeting(String bookname, String meetingname, int meeting_num, String meeting_notes, int meetingroom_id, String startTime, String endTime, List<Integer> staffid) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean add_meeting(String jsonString) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean add_meeting_room(String meetingroom_name, int capacity, String room_numbler, String remark, String atate) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean add_meeting_room(String jString) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean delete_meeting_room(int meetingroom_id) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean modify_meeting_room(int meetingroomid, String meetingroom_name, int capacity, String room_numbler, String remark, String atate) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public boolean modify_meeting_room(String jsonString) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public String show_allmeetingroom() throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String show_meetingroom(int meetingroomid) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String show_personal_meeting(int staffid) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String show_personal_book_meeting(int staffid, String username) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public boolean checkusername(String username) throws RemoteException {
+                    return false;
+                }
+
+                @Override
+                public String search_meeting_room_by_name(String name) throws RemoteException {
+                    return null;
+                }
+
+                @Override
+                public String search_meeting_room_by_number(String number) throws RemoteException {
+                    return null;
+                }
+            };
+            hc.gettest();
+            it = hc.gettest();
+
+//            Integer hitsCount =
+//                    (Integer)application.getAttribute("hitCounter");
+            Integer hitsCount = it.addvisit();
+//            if( hitsCount ==null || hitsCount == 0 ){
+//       /* 第一次访问 */
+//                out.println("欢迎访问菜鸟教程!");
+//                hitsCount = 0;
+//            }else{
+//       /* 返回访问值 */
+//                out.println("欢迎再次访问菜鸟教程!");
+////                hitsCount += 1;
+//
+//
+//
+//            }
+            application.setAttribute("hitCounter", hitsCount);
+
+        %>
+        <p>页面访问量为: <%= hitsCount%></p>
 
         <div class="fh5co-counters" style="background-image: url(images/hero.jpg);" data-stellar-background-ratio="0.5" id="counter-animate">
             <div class="fh5co-narrow-content animate-box">
@@ -193,8 +424,8 @@
                         <span class="fh5co-counter-label">Designer</span>
                     </div>
                     <div class="col-md-4 text-center">
-                        <span class="fh5co-counter js-counter" data-from="0" data-to="15" data-speed="5000" data-refresh-interval="50"></span>
-                        <span class="fh5co-counter-label"> Projects Time</span>
+                        <span class="fh5co-counter js-counter" data-from="0" data-to=<%= hitsCount%> data-speed="5000" data-refresh-interval="50"></span>
+                        <span class="fh5co-counter-label"> view counter</span>
                     </div>
                     <div class="col-md-4 text-center">
                         <span class="fh5co-counter js-counter" data-from="0" data-to="27232" data-speed="5000" data-refresh-interval="50"></span>
