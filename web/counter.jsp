@@ -424,7 +424,7 @@
                         <span class="fh5co-counter-label">Designer</span>
                     </div>
                     <div class="col-md-4 text-center">
-                        <span class="fh5co-counter js-counter" data-from="0" data-to=<%= hitsCount%> data-speed="5000" data-refresh-interval="50"></span>
+                        <span class="fh5co-counter js-counter" data-from="0" data-to=<%= hitsCount%> data-speed="2000" data-refresh-interval="50"></span>
                         <span class="fh5co-counter-label"> view counter</span>
                     </div>
                     <div class="col-md-4 text-center">
