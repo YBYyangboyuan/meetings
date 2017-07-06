@@ -12,6 +12,12 @@ function mysubmit() {
             {
                 type: "post",
                 url: "jsp/Regist.jsp",
+                timeout:3000,
+                complete: function () {
+                    if(status=='timeout'){
+                        swal("糟糕了", "服务器好像休息了", "error");
+                    }
+                },
                 data: {
                     username: $("#username").val(),
                     password: hex_md5($("#password").val()),
@@ -22,14 +28,20 @@ function mysubmit() {
                     position: $("#position").val()
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("error!");
-                    alert(textStatus);
-                    alert(errorThrown);
+                    swal("糟糕了", "服务器好像休息了", "error");
+
 
                 },
                 success: function () {
-                    alert("注册成功");
-                    location.reload(true);
+                    swal({
+                            title: "注册成功",
+                            type: "success",
+                            confirmButtonText: '好的',
+                            closeOnCancel: true
+                        },
+                        function(){
+                            location.reload(true);
+                        });
                 }
             }
         );
@@ -53,6 +65,12 @@ $(function () {
         type: "POST",
         url: "jsp/ShowAllDepartment.jsp",
         cache: false,
+        timeout:3000,
+        complete: function () {
+            if(status=='timeout'){
+                swal("糟糕了", "服务器好像休息了", "error");
+            }
+        },
         dataType: 'json',
         success: function (data) {
             getdata = data;
@@ -63,7 +81,7 @@ $(function () {
             $('#position').selectpicker('refresh');
         },
         error: function () {
-            alert("error");
+            swal("糟糕了", "服务器好像休息了", "error");
 
         }
 
@@ -99,7 +117,7 @@ $(document).ready(function () {
                 }
             },
             username: {
-                trigger:'blur',
+                trigger: 'blur',
                 message: 'The username is not valid',
                 validators: {
                     notEmpty: {
@@ -118,9 +136,9 @@ $(document).ready(function () {
                     remote: {
                         url: 'jsp/checkUsername.jsp',
                         message: '账户名已存在',
-                        data:function (validator) {
-                            return{
-                                username:$('#username').val()
+                        data: function (validator) {
+                            return {
+                                username: $('#username').val()
                             };
                         },
                     },
@@ -220,7 +238,7 @@ $(document).ready(function () {
             telephone: {
                 validators: {
                     digits: {
-                        message: "请输入11位整数"
+                        message: "请勿输入特殊字符"
                     },
                     stringLength: {
                         min: 11,

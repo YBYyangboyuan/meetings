@@ -49,18 +49,23 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 
-    link rel="stylesheet" href="css/bootstrap-select.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-select.js"></script>
     <link href="css/bootstrap-select.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css"rel="stylesheet">
     <link href="css/font-awesome.css">
     <link rel="stylesheet" href="css/a_style.css">
     <link rel="stylesheet" href="css/button_style.css">
+    <link rel="stylesheet" href="css/bootstrap-select.css">
+    <link rel="stylesheet" href="css/bootstrapValidator.css"/>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
     <link href="css/datepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="js/datepicker/moment.js"></script>
-    <script type="text/javascript" src="js/datepicker/picker.js" charset="UTF-8"></script>
+
+    <script type="text/javascript" src="js/ReserveMeeting.js"></script>
+    <script src="js/sweet-alert.js"></script>
+    <link rel="stylesheet" href="css/sweet-alert.css">
+
+
 
 
 </head>
@@ -108,12 +113,11 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="col-xs-offset-1">
-                                        <form id="defaultForm" method="post" class="form-horizontal"
-                                              action="target.php">
+                                        <form id="defaultForm" class="form-horizontal" >
                                             <div class="form-group">
                                                 <label class="col-xs-3 control-label">会议名称</label>
                                                 <div class="col-xs-6">
-                                                    <input type="text" class="form-control" name="firstName"/>
+                                                    <input type="text" class="form-control" id="meetingname" name="meetingname" placeholder="必填"/>
                                                     <!--placeholder="First name"-->
                                                 </div>
                                             </div>
@@ -121,28 +125,27 @@
                                             <div class="form-group">
                                                 <label class="col-xs-3 control-label">预计参加人数</label>
                                                 <div class="col-xs-6">
-                                                    <input type="text" class="form-control"/>
+                                                    <input onblur="return myblur()"  type="text" class="form-control" id="meetingnum" name="meetingnum" placeholder="必填"/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-xs-3 control-label">预计开始时间</label>
                                                 <div class="col-xs-6">
-                                                    <input type='text' class="form-control" id="datetimepicker1"/>
+                                                    <input onblur="return myblur()" type='text' class="form-control" id="datetimepicker1" name="starttime" placeholder="必填"/>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-xs-3 control-label">预计结束时间</label>
                                                 <div class="col-xs-6">
-                                                    <input type='text' class="form-control" id="datetimepicker2"/>
+                                                    <input onblur="return myblur()" type='text' class="form-control" id="datetimepicker2" name="endtime" placeholder="必填"/>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-xs-3 control-label">会议室名称</label>
                                                 <div class="col-xs-6">
-                                                    <select name="meetingroonnames" id="meetingroonnames"
-                                                            class="selectpicker show-menu-arrow" data-live-search="true"
+                                                    <select data-size="5" data-live-search="true" name="meetingroonnames" id="meetingroonnames" class="selectpicker show-menu-arrow" data-live-search="true"
                                                             data-width="100%">
                                                     </select>
 
@@ -151,7 +154,7 @@
                                             <div class="form-group">
                                                 <label class="col-xs-3 control-label">会议说明</label>
                                                 <div class="col-xs-6">
-                                                    <textarea type="text" class="form-control" name="email"></textarea>
+                                                    <textarea type="text" class="form-control" id="meetingnotes" name="meetingnotes"></textarea>
                                                 </div>
                                             </div>
 
@@ -159,26 +162,16 @@
                                             <div class="form-group">
                                                 <label class="col-xs-3 control-label">选择参会人员</label>
                                                 <div class="col-xs-6">
-                                                    <select class="selectpicker" data-live-search="true" multiple
-                                                            data-width="100%">
-                                                        <optgroup label="Condiments">
-                                                            <option>Mustard</option>
-                                                            <option>Ketchup</option>
-                                                            <option>Relish</option>
-                                                        </optgroup>
-                                                        <optgroup label="Breads">
-                                                            <option>Plain</option>
-                                                            <option>Steamed</option>
-                                                            <option>Toasted</option>
-                                                        </optgroup>
+                                                    <select data-size="7" data-dropup-auto="false" name="staff" id="staff" class="dropup selectpicker" data-live-search="true" multiple
+                                                            data-width="100%" data-actions-box="true">
                                                     </select>
                                                 </div>
                                             </div>
                                             <br>
                                             <div class="form-group">
                                                 <div class="col-xs-offset-3 col-xs-6">
-                                                    <button class="col-xs-4 btn nooutline btn-default">预定会议</button>
-                                                    <button class="col-xs-offset-2 col-xs-4 btn nooutline btn-default otherstyle">
+                                                    <button class="mysubmit col-xs-4 btn nooutline btn-default">预定会议</button>
+                                                    <button type="reset" class="myreset col-xs-offset-2 col-xs-4 btn nooutline btn-default otherstyle">
                                                         重置
                                                     </button>
 
@@ -196,45 +189,6 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker1').datetimepicker({
-                format: 'YYYY/MM/DD HH:mm:ss',
-                locale: 'zh-cn'
-
-            });
-
-        });
-        $(function () {
-            $('#datetimepicker2').datetimepicker({
-                format: 'YYYY/MM/DD HH:mm:ss',
-                locale: 'zh-cn'
-
-            });
-
-        });
-        $(function () {
-            $.ajax({
-                type: "POST",
-                url: "jsp/ShowAllMeetingRoom.jsp",
-                cache: false,
-                dataType: 'json',
-                success: function (data) {
-                    $.each(data, function (i) {
-                        $('#meetingroonnames').append("<option>" + data[i].meetingRoomName + "</option>");
-                    });
-                    $('#meetingroonnames').selectpicker('refresh');
-                },
-                error: function () {
-                    alert("error");
-
-                }
-
-            })
-        })
-
-    </script>
 
     <div class="row work-pagination animate-box" data-animate-effect="fadeInLeft">
         <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0">
@@ -270,6 +224,12 @@
 <script src="js/jquery.countTo.js"></script>
 <!-- MAIN JS -->
 <script src="js/main.js"></script>
+
+<script type="text/javascript" src="js/datepicker/moment.js"></script>
+<script type="text/javascript" src="js/datepicker/picker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/bootstrapValidator.js"></script>
+<script src="js/bootstrap-select.js"></script>
+
 
 </body>
 </html>

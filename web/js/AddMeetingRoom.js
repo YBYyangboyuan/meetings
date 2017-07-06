@@ -7,11 +7,13 @@ function mysubmit() {
     var bootstrapValidator = $('#defaultForm').data('bootstrapValidator');
     bootstrapValidator.validate();
     if (bootstrapValidator.isValid()) {
+        $("#submit").attr("disabled", true);
         //表单提交的方法、比如ajax提交
         $.ajax(
             {
                 type: "post",
                 url: "jsp/AddMeetingRoom.jsp",
+                timeout:3000,
                 data: {
                     type:"regist",
                     roomnumber: $("#roomnumber").val(),
@@ -22,14 +24,24 @@ function mysubmit() {
 
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("error!");
-                    alert(textStatus);
-                    alert(errorThrown);
+                    swal("糟糕了", "服务器好像休息了", "error");
 
                 },
                 success: function () {
-                    alert("注册成功");
-                    location.reload(true);
+                    swal({
+                            title: "添加成功",
+                            type: "success",
+                            confirmButtonText: '好的',
+                            closeOnCancel: true,
+                        },
+                        function(){
+                            location.reload(true);
+                        });
+                },
+                complete: function () {
+                    if(status=='timeout'){
+                        alert("超时");
+                    }
                 }
             }
         );
@@ -121,11 +133,20 @@ $(document).ready(function () {
                         message: '会议室最少可容纳2人'
                     },
                     lessThan: {
-                        value: 100,
-                        message: '会议室最多可容纳100人'
+                        value: 500,
+                        message: '会议室最多可容纳500人'
                     }
                 }
             },
+            remark: {
+                validators: {
+                    stringLength: {
+                        max: 200,
+                        message: '请输入不超过200字符'
+                    }
+                }
+            },
+
         }
     });
 });

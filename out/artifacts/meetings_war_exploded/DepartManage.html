@@ -51,16 +51,19 @@
 
 
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-table.min.css">
     <link rel="stylesheet" href="css/button_style.css">
     <link rel="stylesheet" href="css/a_style.css">
 
-
-    <script src="js/jquery.base64.js"></script>
-    <script src="js/bootstrap-table.js"></script>
-    <script src="js/bootstrap-table-export.js"></script>
+    <link rel="stylesheet" href="css/bootstrapValidator.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.base64.js"></script>
     <script type="text/javascript" src="js/DepartManage.js"></script>
+    <script src="js/sweet-alert.js"></script>
+    <link rel="stylesheet" href="css/sweet-alert.css">
     <style type="text/css">
 
         .table > tbody > tr > td {
@@ -71,17 +74,6 @@
             border-top: 1px solid #ddd
         }
     </style>
-
-    <script type="text/javascript">
-        function operateFormatter(value, row, index) {
-            return [
-                '<button style="margin-right: 10px" type="button" class="details nooutline btn btn-default  btn-sm" data-toggle="modal" data-target="#myModal">编辑</button>',
-                '<button  id="mydelete" type="button" class=" mydelete nooutline otherstyle btn btn-default  btn-sm">删除</button>',
-            ].join('');
-        }
-    </script>
-
-
 </head>
 <body>
 
@@ -125,21 +117,17 @@
                         <a>添加部门</a>
                     </div>
                     <div class="panel-body">
-                        <form id="formSearch1" class="form-horizontal">
+                        <form id="defaultForm1" class="form-horizontal">
                             <div class="form-group" style="margin-top:15px">
                                 <div class="col-xs-offset-2">
-                                    <label class="control-label "
-                                           for="txt_search_departmentname">部门名称</label>
+                                    <label class="control-label ">部门名称</label>
                                     <div class="col-xs-3">
-                                        <input type="text" class="form-control" id="txt_search_departmentname">
+                                        <input type="text" class="form-control" name="departmentName" id="departmentName">
                                     </div>
                                     <div class="col-xs-offset-1 col-xs-3" style="text-align:left;">
 
-                                        <button onclick="return myadd()" id="add_departmentname" type="button"
-                                                class="col-xs-4 nooutline btn btn-default  btn-sm">添加
-                                        </button>
-                                        <button type="reset"
-                                                class="col-xs-4 col-xs-offset-1 otherstyle nooutline btn btn-default  btn-sm">
+                                        <button onclick="return myadd()" id="add_departmentname" type="button" class="col-xs-4 nooutline btn btn-default  btn-sm">添加</button>
+                                        <button type="reset" onclick="return myreset()" class="col-xs-4 col-xs-offset-1 otherstyle nooutline btn btn-default  btn-sm">
                                             重置
                                         </button>
                                     </div>
@@ -173,7 +161,8 @@
                                 <tr>
                                     <th data-field="departmentId" data-formatter="idFormatter">部门编号</th>
                                     <th data-field="departmentName">部门名称</th>
-                                    <th data-visible="false" data-field="departmentNum">num</th>
+
+                                    <th data-visible="false" data-field="departmentNum" >num</th>
                                     <th data-events="operateEvent" class="col-xs-2" data-field="operation"
                                         data-formatter="operateFormatter">操作
                                     </th>
@@ -197,7 +186,7 @@
                         &times;
                     </button>
                     <h4 class="modal-title" id="myModalLabel">
-                        会议室信息
+                        部门信息
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -216,6 +205,8 @@
                                        name="departmentName_modal"/>
                                 <input style="display: none" type="text" class="form-control" id="departmentNum_modal"
                                        name="departmentNum_modal"/>
+                                <table id="tablemodel"></table>
+
                             </div>
                         </div>
                     </form>
@@ -226,13 +217,20 @@
                             class="nooutline otherstyle btn btn-default" data-toggle="modal" data-target="#myModal">确认修改
                     </button>
 
-                    <button type="button" class="nooutline btn btn-default" data-dismiss="modal">返回</button>
+                    <button   type="button" class="nooutline btn btn-default" data-dismiss="modal">返回</button>
 
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal -->
     </div>
-
+    <script type="text/javascript">
+        function operateFormatter(value, row, index) {
+            return [
+                '<button style="margin-right: 10px" type="button" class="details nooutline btn btn-default  btn-sm" data-toggle="modal" data-target="#myModal">编辑</button>',
+                '<button  id="mydelete" type="button" class=" mydelete nooutline otherstyle btn btn-default  btn-sm">删除</button>',
+            ].join('');
+        }
+    </script>
 
     <div class="row work-pagination animate-box" data-animate-effect="fadeInLeft">
         <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0">
@@ -270,5 +268,12 @@
 
 <!-- MAIN JS -->
 <script src="js/main.js"></script>
+
+<script type="text/javascript" src="js/bootstrap-table.js"></script>
+<script type="text/javascript" src="js/bootstrap-table-export.js"></script>
+<script type="text/javascript" src="js/bootstrapValidator.js"></script>
+
+
+
 </body>
 </html>

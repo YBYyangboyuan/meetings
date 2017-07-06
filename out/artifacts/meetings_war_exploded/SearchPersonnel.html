@@ -48,27 +48,19 @@
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <!-- jQuery Easing -->
-    <script src="js/jquery.easing.1.3.js"></script>
-    <!-- Bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Carousel -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- Stellar -->
-    <script src="js/jquery.stellar.min.js"></script>
-    <!-- Waypoints -->
-    <script src="js/jquery.waypoints.min.js"></script>
-    <!-- Counters -->
-    <script src="js/jquery.countTo.js"></script>
-    <!-- MAIN JS -->
-    <script src="js/main.js"></script>
 
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-table.min.css">
     <link rel="stylesheet" href="css/button_style.css">
     <link rel="stylesheet" href="css/a_style.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script src="js/sweet-alert.js"></script>
+    <link rel="stylesheet" href="css/sweet-alert.css">
     <style type="text/css">
 
         .table > tbody > tr > td {
@@ -79,21 +71,6 @@
             border-top: 1px solid #ddd
         }
     </style>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!--<script src="assets/bootstrap2.3/js/bootstrap.min.js"></script>-->
-    <script src="js/jquery.base64.js"></script>
-    <script src="js/bootstrap-table.js"></script>
-    <script src="js/bootstrap-table-export.js"></script>
-
-    <script type="text/javascript">
-        function operateFormatter(value, row, index) {
-            return [
-                '<button type="button" class="nooutline RoleOfC btn btn-default  btn-sm" data-toggle="modal" data-target="#myModal">关闭账号</button>',
-
-            ].join('');
-        }
-    </script>
 </head>
 <body>
 
@@ -127,6 +104,7 @@
 
     </aside>
 
+
     <div class="container" style="padding-left: 215px">
         <div class="panel-body" style="padding-bottom:0px;padding-left: 0px;padding-right: 0px">
             <div class="panel panel-default">
@@ -134,41 +112,38 @@
                     <a>搜索员工</a>
                 </div>
                 <div class="panel-body">
-                    <form id="formSearch1" class="form-horizontal">
+                    <form id="defaultForm" class="form-horizontal">
                         <div class="form-group" style="margin-top:15px">
+                            <label style="width: 45px" class="control-label " for="name">姓名</label>
                             <div class="col-xs-3">
-                                <label style="width: 45px" class="control-label "
-                                       for="txt_search_departmentname">姓名</label>
-                                <input type="text" class="form-control" id="txt_search_departmentname">
+                                <input type="text" class="form-control" name="name" id="name">
                             </div>
+                            <label style="width: 100px" class="control-label col-xs-1"
+                                   for="username">账号名</label>
                             <div class="col-xs-3">
-                                <label style="width: 100px" class="control-label col-xs-1"
-                                       for="txt_search_statu">账号名</label>
-
-                                <input type="text" class="form-control" id="txt_search_statu">
+                                <input type="text" class="form-control" name="username" id="username">
                             </div>
-                            <div class="col-xs-5" style="margin-top:5px">
-                                <label style="width: 100px" class="control-label col-xs-1">状态</label>
+                            <label  style="color: #000000; width: 100px" class="control-label col-xs-1">状态</label>
 
 
+                            <div id="state" class="col-xs-3" style="margin-top:5px">
                                 <label>
-                                    <input style="margin:0 2px 0 10px" type="radio" name="gender" value="pass" checked/>
-                                    已批准
-                                </label>
-                                <label>
-                                    <input style="margin:0 2px 0 20px" type="radio" name="gender" value="wait"/> 待审批
+                                    <input style="margin:0 2px 0 10px" type="radio" name="gender" value="pass"/> 已批准
                                 </label>
                                 <label>
                                     <input style="margin:0 2px 0 20px" type="radio" name="gender" value="close"/> 已关闭
+                                </label>
+                                <label>
+                                    <input style="margin:0 2px 0 20px" type="radio" name="gender" value="all" checked/> 所有
                                 </label>
                             </div>
                         </div>
                         <div>
                             <div class="col-xs-offset-5 col-xs-3" style="text-align:left;">
 
-                                <button type="button" class="col-xs-4 nooutline btn btn-default  btn-sm">查询</button>
-                                <button type="button"
-                                        class="col-xs-4 col-xs-offset-1 otherstyle nooutline btn btn-default  btn-sm">重置
+                                <button id="searchpe" type="button" class="col-xs-4 nooutline btn btn-default  btn-sm">查询</button>
+                                <button id="reset" type="reset"
+                                        class=" col-xs-4 col-xs-offset-1 otherstyle nooutline btn btn-default  btn-sm">重置
                                 </button>
 
                             </div>
@@ -178,7 +153,6 @@
             </div>
         </div>
     </div>
-
     <div class="container" style="padding-left: 215px">
         <div class="panel-body" style="padding-bottom:0px;padding-left: 0px;padding-right: 0px">
             <div class="panel panel-default">
@@ -187,35 +161,36 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse ">
                     <div class="panel-body">
-                        <table id="table"
-                               class="table table-striped"
-                               data-toggle="table"
-                               data-url="data/data1.json"
-                               data-show-columns="true"
-                               data-search="true"
-                               data-show-refresh="true"
-                               data-show-toggle="true"
-                               data-pagination="true"
-                               data-page-size="5"
-                               data-cache="false">
-                            <thead>
-                            <tr>
-                                <th data-field="meetingname" data-formatter="idFormatter">会议名称</th>
-                                <th data-field="roomname">会议室名称</th>
-                                <th data-field="begintime">会议开始时间</th>
-                                <th data-field="endtime">会议结束时间</th>
-                                <th data-field="resvertime">会议预定时间</th>
-                                <th class="col-xs-2" data-field="operation" data-formatter="operateFormatter">操作
-                                </th>
-                            </tr>
-                            </thead>
-                        </table>
+                        <table id="table"></table>
+                        <!--<table id="table"-->
+                        <!--class="table table-striped"-->
+                        <!--data-toggle="table"-->
+                        <!--data-show-columns="true"-->
+                        <!--data-search="true"-->
+                        <!--data-show-refresh="true"-->
+                        <!--data-show-toggle="true"-->
+                        <!--data-pagination="true"-->
+                        <!--data-page-size="5"-->
+                        <!--data-cache="false">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                        <!--<th data-field="name" data-formatter="idFormatter">姓名</th>-->
+                        <!--<th data-field="username">账号名</th>-->
+                        <!--<th data-field="telephone">联系电话</th>-->
+                        <!--<th data-field="email">电子邮箱</th>-->
+                        <!--<th data-field="position">所属部门</th>-->
+                        <!--<th data-visible="false"  data-field="staffId">id</th>-->
+                        <!--<th data-visible="false"  data-field="state">state</th>-->
+                        <!--<th data-events="operateEvent" class="col-xs-2" data-field="operation" data-formatter="operateFormatter">操作-->
+                        <!--</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--</table>-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div class="row work-pagination animate-box" data-animate-effect="fadeInLeft">
         <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0">
@@ -251,5 +226,10 @@
 <script src="js/jquery.countTo.js"></script>
 <!-- MAIN JS -->
 <script src="js/main.js"></script>
+
+<script type="text/javascript" src="js/SearchPersonnel.js"></script>
+
+<script type="text/javascript" src="js/bootstrap-table.js"></script>
+<script type="text/javascript" src="js/bootstrap-table-export.js"></script>
 </body>
 </html>

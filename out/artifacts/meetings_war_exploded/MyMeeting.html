@@ -54,23 +54,15 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-table.min.css">
     <link rel="stylesheet" href="css/button_style.css">
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!--<script src="assets/bootstrap2.3/js/bootstrap.min.js"></script>-->
-    <script src="js/jquery.base64.js"></script>
-    <script src="js/bootstrap-table.js"></script>
     <link rel="stylesheet" href="css/a_style.css">
-    <script src="js/bootstrap-table-export.js"></script>
+    <link rel="stylesheet" href="css/bootstrapValidator.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrapValidator.js"></script>
 
-    <script type="text/javascript">
-        function operateFormatter(value, row, index) {
-            return [
-                '<button  type="button" class="nooutline btn btn-default  btn-sm" data-toggle="modal" data-target="#myModal">查看详情</button>',
-            ].join('');
-        }
-    </script>
+    <script src="js/MyMeeting.js"></script>
     <style type="text/css">
+
         .table > tbody > tr > td {
             vertical-align: middle !important;
             padding: 3px;
@@ -79,6 +71,8 @@
             border-top: 1px solid #ddd
         }
     </style>
+
+
 </head>
 <body>
 
@@ -118,13 +112,12 @@
                 <div style="text-align:center;font-weight:bold;font-size: larger" class="panel-heading">
                     <a>我将参加的会议</a>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-collapse collapse in">
                     <div class="panel-body">
                         <form id="formSearch" class="form-horizontal">
-                            <table id="table"
+                            <table id="tableResver"
                                    class="table table-striped"
                                    data-toggle="table"
-                                   data-url="data/data1.json"
                                    data-show-columns="true"
                                    data-search="true"
                                    data-show-refresh="true"
@@ -134,13 +127,18 @@
                                    data-cache="false">
                                 <thead>
                                 <tr>
-                                    <th data-field="meetingname" data-formatter="idFormatter">会议名称</th>
-                                    <th data-field="roomname">会议室名称</th>
-                                    <th data-field="begintime">会议开始时间</th>
+                                    <th data-field="meetingName" data-formatter="idFormatter">会议名称</th>
+                                    <th data-field="meetingroomname">会议室名称</th>
+                                    <th data-field="starttime">会议开始时间</th>
                                     <th data-field="endtime">会议结束时间</th>
-                                    <th data-field="resvertime">会议预定时间</th>
-                                    <th data-field="resvermen">预订者</th>
-                                    <th class="col-xs-2" data-field="operation" data-formatter="operateFormatter">操作
+                                    <th data-field="booktime">会议预定时间</th>
+                                    <th data-field="name">预订者</th>
+                                    <th data-visible="false" data-field="meetingId">id</th>
+                                    <th data-visible="false" data-field="peopleNum">num</th>
+                                    <th data-visible="false" data-field="meetingNotes">notes</th>
+                                    <th data-visible="false" data-field="data">notes</th>
+                                    <th data-events="operateEvent" class="col-xs-2" data-field="operation"
+                                        data-formatter="operateFormatter">操作
                                     </th>
                                 </tr>
                                 </thead>
@@ -153,8 +151,7 @@
     </div>
 
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -166,67 +163,72 @@
                     </h4>
                 </div>
                 <div class="modal-body">
+                    <form id="defaultForm">
+                        <div class="form-group">
+                            <label control-label>会议名称</label>
+                            <div class="">
+                                <input type="text" class=" form-control" id="meetingName_modal" name="meetingName_modal"
+                                       disabled/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" control-label">预计参加人数</label>
+                            <div class="">
+                                <input type="text" class="form-control" id="peopleNum_modal" name="peopleNum_modal"
+                                       disabled/>
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label control-label>会议名称</label>
-                        <div class="">
-                            <input type="text" class=" form-control" name="username" disabled/>
+                        <div class="form-group">
+                            <label class=" control-label">预计开始时间</label>
+                            <div class="">
+                                <input type="text" class="form-control" id="starttime_modal" name="starttime_modal"
+                                       disabled/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class=" control-label">预计参加人数</label>
-                        <div class="">
-                            <input type="password" class="form-control" name="password" disabled/>
+                        <div class="form-group">
+                            <label class=" control-label">预计结束时间</label>
+                            <div class="">
+                                <input type="text" class="form-control" id="endtime_modal" name="endtime_modal"
+                                       disabled/>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label class=" control-label">会议说明</label>
+                            <div class="">
+                            <textarea rows="3" type="password" class="form-control" id="meetingNotes_modal"
+                                      name="meetingNotes_modal" disabled></textarea>
+                            </div>
+                        </div>
+                        <label class=" control-label">参会人员</label>
 
-                    <div class="form-group">
-                        <label class=" control-label">预计开始时间</label>
-                        <div class="">
-                            <input type="password" class="form-control" name="confirmPassword"
-                                   disabled/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class=" control-label">预计结束时间</label>
-                        <div class="">
-                            <input type="password" class="form-control" name="confirmPassword"
-                                   disabled/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class=" control-label">会议说明</label>
-                        <div class="">
-                                                <textarea rows="3" type="password" class="form-control"
-                                                          name="confirmPassword" disabled></textarea>
-                        </div>
-                    </div>
-                    <label class=" control-label">参会人员</label>
+                        <table id="table"
+                               class="table table-striped"
+                               data-toggle="table"
+                               data-url="data/data1.json"
+                               data-show-columns="true"
+                               data-search="true"
+                               data-show-refresh="true"
+                               data-show-toggle="true"
+                               data-pagination="true"
+                               data-page-size="5"
+                               data-cache="false">
+                            <thead>
+                            <tr>
+                                <th data-field="name" data-formatter="idFormatter">姓名</th>
+                                <th data-field="telephone">联系电话</th>
+                                <th data-field="email">电子邮箱</th>
+                            </tr>
+                            </thead>
+                        </table>
 
-                    <table id="table"
-                           class="table table-striped"
-                           data-toggle="table"
-                           data-url="data/data1.json"
-                           data-show-columns="true"
-                           data-search="true"
-                           data-show-refresh="true"
-                           data-show-toggle="true"
-                           data-pagination="true"
-                           data-page-size="5"
-                           data-cache="false">
-                        <thead>
-                        <tr>
-                            <th data-field="meetingname" data-formatter="idFormatter">姓名</th>
-                            <th data-field="roomname">联系电话</th>
-                            <th data-field="begintime">电子邮箱</th>
-                        </tr>
-                        </thead>
-                    </table>
+                    </form>
                 </div>
+
                 <div class="modal-footer">
+
                     <button type="button" class="nooutline btn btn-default" data-dismiss="modal">返回
                     </button>
-
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal -->
@@ -269,6 +271,9 @@
 
 <!-- MAIN JS -->
 <script src="js/main.js"></script>
+
+<script src="js/bootstrap-table.js"></script>
+<script src="js/bootstrap-table-export.js"></script>
 
 </body>
 </html>
