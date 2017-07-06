@@ -1,194 +1,182 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理系统</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/validator/bootstrap.login.min.css">
+    <link href="css/login.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/bootstrapValidator.css"/>
+    <script src="js/md5.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/login.js"></script>
+    <script type="text/javascript" src="js/bootstrapValidator.js"></script>
 
-    <!-- /.website title -->
-    <title>LogeIn</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Get Shit Done Bootstrap Wizard by Creative Tim</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <!--     Fonts and icons     -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
 
     <!-- CSS Files -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet" media="screen">
-    <link href="css/owl.theme.css" rel="stylesheet">
-    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
 
-    <!-- Colors -->
-    <link href="css/css-index.css" rel="stylesheet" media="screen">
-    <!-- <link href="css/css-index-green.css" rel="stylesheet" media="screen"> -->
-    <!-- <link href="css/css-index-purple.css" rel="stylesheet" media="screen"> -->
-    <!-- <link href="css/css-index-red.css" rel="stylesheet" media="screen"> -->
-    <!-- <link href="css/css-index-orange.css" rel="stylesheet" media="screen"> -->
-    <!-- <link href="css/css-index-yellow.css" rel="stylesheet" media="screen"> -->
-
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="css/demo.css" rel="stylesheet" />
 
 </head>
-
-<body data-spy="scroll" data-target="#navbar-scroll">
-
-<!-- /.preloader -->
-<div id="preloader"></div>
-<div id="top"></div>
-
-<!-- NAVIGATION -->
-<div id="menu">
-    <nav class="navbar-wrapper navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-backyard">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand site-name" href="#top"><img src="images/logo2.png" alt="logo"></a>
-            </div>
-
-            <div id="navbar-scroll" class="collapse navbar-collapse navbar-backyard navbar-right">
-                <ul class="nav navbar-nav">
-                    <li><a href="#intro">About</a></li>
-                    <li><a href="Signup.html">SignUp</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-
-<!-- /.parallax full screen background image -->
-<div class="fullscreen landing parallax" style="background-image:url('images/bg.jpg');" data-img-width="2000" data-img-height="1333" data-diff="100">
-
-    <div class="overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-
-                    <!--&lt;!&ndash; /.logo &ndash;&gt;-->
-                    <!--<div class="logo wow fadeInDown"> <a href=""><img src="images/logo.png" alt="logo"></a></div>-->
-
-                    <!-- /.main title -->
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <h1 class="wow fadeInLeft">
-                        Beautiful High Converting Landing Page
-                    </h1>
-
-                    <!-- /.header paragraph -->
-                    <div class="landing-text wow fadeInUp">
-                        <p>Backyard is a modern and customizable landing page template designed to increase conversion of your product. Backyard is flexible to suit any kind of your business. Try now and join with our happy customers!</p>
-                    </div>
-
-                    <!-- /.header button -->
-                    <!--<div class="head-btn wow fadeInLeft">-->
-                        <!--<a href="#feature" class="btn-primary">Features</a>-->
-                        <!--<a href="#download" class="btn-default">Download</a>-->
-                    <!--</div>-->
+<body>
+<div class="image-container set-full-height" style="background-image: url('images/wizard.jpg')">
 
 
+    <!--  Made With Get Shit Done Kit  -->
+    <a href="#/get-shit-done/index.html?ref=get-shit-done-bootstrap-wizard" class="made-with-mk">
+        <div class="brand">DM</div>
+        <div class="made-with">Made with <strong>GP24</strong></div>
+    </a>
 
-                </div>
-
-                <!-- /.signup form -->
-                <div class="col-md-5">
-
-                    <div class="signup-header wow fadeInUp">
-                        <h3 class="form-title text-center">GET STARTED</h3>
-                        <form class="form-header"   role="form" method="POST" id="#">
-                            <input type="hidden" name="u" value="503bdae81fde8612ff4944435">
-                            <input type="hidden" name="id" value="bfdba52708">
-                            <div class="form-group">
-                                <input class="form-control input-lg" name="MERGE1" id="name" type="text" placeholder="Your account" required>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control input-lg" name="MERGE0" id="password" type="password" placeholder="The password" required>
-                            </div>
-                            <div class="form-group last">
-                                <input type="submit" class="btn btn-warning btn-block btn-lg" value="Sign In" onclick="login()">
-
-                            </div>
-                            <p class="privacy text-center"> <a href="privacy.html">forget password</a>.</p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script language="JavaScript">
-    function login() {
-        var a;
-        a = $('#password').val();
-        if(a==123123){
-            alert($('#password').val());
-                window.location.href= "logein.html";
-//            index.jsp?action=HomePage.jsp  LogeIn.html?action=
-        }
-
-    else{
-            alert("wrong")
-        }
-
-
-    }
-
-</script>
-
-<!-- /.intro section -->
-<div id="intro">
+    <!--   Big container   -->
     <div class="container">
         <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
 
-            <!-- /.intro image -->
-            <div class="col-md-6 intro-pic wow slideInLeft">
-                <img src="images/intro-image.jpg" alt="image" class="img-responsive">
+                <!--      Wizard container        -->
+                <div class="wizard-container">
+
+                    <div class="card wizard-card" data-color="orange" id="wizardProfile">
+                        <form id="defaultForm">
+                            <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
+
+                            <div class="wizard-header">
+                                <h3>
+                                    <b>BUILD</b> YOUR PROFILE <br>
+                                    <small>This information will let us know more about you.</small>
+                                </h3>
+                            </div>
+
+                            <div class="wizard-navigation">
+                                <ul>
+                                    <li><a href="#account" data-toggle="tab">Account</a></li>
+                                    <li><a href="#about" data-toggle="tab">About</a></li>
+                                    <!--<li><a href="#address" data-toggle="tab">Address</a></li>-->
+                                </ul>
+
+                            </div>
+
+                            <div class="tab-content">
+                                <div class="tab-pane" id="about">
+                                    <div class="row">
+                                        <h4 class="info-text"> Let's start with the basic information (with validation)</h4>
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <div class="picture-container">
+                                                <div class="picture">
+                                                    <img src="images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
+                                                    <input type="file" id="wizard-picture">
+                                                </div>
+                                                <h6>Choose Picture</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>USER name <small>(required)</small></label>
+                                                <input id="username" name="username" type="text" class="form-control" placeholder="God...">
+                                                <!--<input type="text" class="form-control" name="username" id="username" placeholder="账户名">-->
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Last Name <small>(required)</small></label>
+                                                <input id="password" name="password" type="password" class="form-control" placeholder="...">
+                                                <button onclick="myccc()" id="submit"  class='btn  btn-fill btn-warning btn-wd btn-sm' >登录</button>
+                                            </div>
+                                        </div>
+                                        <!--<div class="col-sm-10 col-sm-offset-1">-->
+                                        <!--<div class="form-group">-->
+                                        <!--<label>Email <small>(required)</small></label>-->
+                                        <!--<input name="email" type="email" class="form-control" placeholder="andrew@creative-tim.com">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="account">
+                                    <h4 class="info-text"> What are you doing? (checkboxes) </h4>
+                                    <div class="row">
+
+                                        <div class="col-sm-10 col-sm-offset-1">
+                                            <div class="col-sm-4">
+                                                <div class="choice" data-toggle="wizard-checkbox">
+                                                    <input type="checkbox" name="jobb" value="Design">
+                                                    <div class="icon">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </div>
+                                                    <h6>Design</h6>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4 col-sm-offset-3">
+                                                <div class="choice" data-toggle="wizard-checkbox">
+                                                    <input type="checkbox" name="jobb" value="Develop">
+                                                    <div class="icon">
+                                                        <i class="fa fa-laptop"></i>
+                                                    </div>
+                                                    <h6>Develop</h6>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="wizard-footer height-wizard">
+                                <div class="pull-right">
+                                    <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
+                                    <!--<input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' />-->
+
+                                </div>
+
+                                <div class="pull-left">
+                                    <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div> <!-- wizard container -->
             </div>
+        </div><!-- end row -->
+    </div> <!--  big container -->
 
-            <!-- /.intro content -->
-            <div class="col-md-6 wow slideInRight">
-                <h2>Optimize performance through advanced targeting solutions</h2>
-                <p>Good marketing makes the company look smart. <a href="#">Great marketing</a> makes the customer feel smart, - Joe Chernov. Never doubt a small group of thoughtful, committed people can change the world. Indeed, it is the only thing that ever has, - Margaret Mead. The best way to predict the future is to create it, - Peter Drucker.
-                </p>
+    <!--<div class="footer">-->
+    <!--<div class="container">-->
+    <!--made with <i class="fa fa-heart heart"></i> by <a href="#">Creative Tim</a>. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>-->
+    <!--</div>-->
+    <!--</div>-->
 
-                <div class="btn-section"><a href="#feature" class="btn-default">Learn More</a></div>
-
-            </div>
-        </div>
-    </div>
 </div>
 
-
-
-<!-- /.footer -->
-<footer id="footer">
-    <div class="container">
-        <div class="col-sm-4 col-sm-offset-4">
-            <!-- /.social links -->
-            <div class="social text-center">
-                <ul>
-                    <li><a class="wow fadeInUp" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                    <li><a class="wow fadeInUp" href="https://www.facebook.com/" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="wow fadeInUp" href="https://plus.google.com/" data-wow-delay="0.4s"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a class="wow fadeInUp" href="https://instagram.com/" data-wow-delay="0.6s"><i class="fa fa-instagram"></i></a></li>
-                </ul>
-            </div>
-            <a href="#" class="scrollToTop"><i class="pe-7s-up-arrow pe-va"></i></a>
-        </div>
-    </div>
-</footer>
-
-<!-- /.javascript files -->
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/custom.js"></script>
-<script src="js/jquery.sticky.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script>
-    new WOW().init();
-
-</script>
 </body>
+
+<!--   Core JS Files   -->
+<script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+
+<!--  Plugin for the Wizard -->
+<script src="js/gsdk-bootstrap-wizard.js"></script>
+
+<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
+<script src="js/jquery.validate.min.js"></script>
+
 </html>

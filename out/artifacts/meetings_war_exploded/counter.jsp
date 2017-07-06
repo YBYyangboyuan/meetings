@@ -68,7 +68,9 @@
         </nav>
 
         <div class="fh5co-footer">
-            <p><small>&copy; 2016 Nitro Free HTML5. All Rights Reserved.</span> <span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></span></small></p>
+            <p><small>&copy; 2017.06-07</span> <span>Designed by group24 </span> <span>Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></span></small></p>
+            <%--<p><small>&copy; 2017.06-07</span> <span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></span></small></p>--%>
+
             <ul>
                 <li><a href="#"><i class="icon-facebook"></i></a></li>
                 <li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -192,209 +194,8 @@
         <!--</div>-->
         <%
             HelloClient hc = new HelloClient();
-            Itest it=new Itest() {
-                @Override
-                public int addvisit() throws RemoteException {
-                    return 0;
-                }
-
-                @Override
-                public boolean regist(String name, String telephone, String email, String position, int departmentid, String username, String password) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean regist(String jsonString) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public String login(String name, String password) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String login(String jsonString) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public boolean refuse_regisiton(int EmployeeCopyid) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean recover_regisiton(int EmployeeCopyid) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean passregistion(int EmployeeCopyid) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public String showregistall(int status) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String showpassedall() throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public boolean deletestaff(int staffid) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean deletestaffcopy(int staffid) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean delete_personal_book_meeting(int meetingid) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public String searchstaffbyname(String staff_name) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String searchstaffbyusername(String staff_name) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String searchstaffbydepartment(int departmentid) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String searchstaffbydepartment() throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String searchstaff(String jsonString) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String searchMeeting(String jsonString) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String searchMeeting(Map<String, Object> map) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String searchMeeting(String meeting_name, String meeting_notes, String book_name, int people_num, int meetingroom_id, int status, String start_time, String end_time) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public void add_department(String departmentname) throws RemoteException {
-
-                }
-
-                @Override
-                public boolean modify_department(int departmentid, String modifyname) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean modify_department(String jsonString) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean delect_department(int departmentid) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public String show_department() throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public boolean add_meeting(String bookname, String meetingname, int meeting_num, String meeting_notes, int meetingroom_id, String startTime, String endTime, List<Integer> staffid) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean add_meeting(String jsonString) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean add_meeting_room(String meetingroom_name, int capacity, String room_numbler, String remark, String atate) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean add_meeting_room(String jString) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean delete_meeting_room(int meetingroom_id) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean modify_meeting_room(int meetingroomid, String meetingroom_name, int capacity, String room_numbler, String remark, String atate) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public boolean modify_meeting_room(String jsonString) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public String show_allmeetingroom() throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String show_meetingroom(int meetingroomid) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String show_personal_meeting(int staffid) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String show_personal_book_meeting(int staffid, String username) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public boolean checkusername(String username) throws RemoteException {
-                    return false;
-                }
-
-                @Override
-                public String search_meeting_room_by_name(String name) throws RemoteException {
-                    return null;
-                }
-
-                @Override
-                public String search_meeting_room_by_number(String number) throws RemoteException {
-                    return null;
-                }
-            };
             hc.gettest();
-            it = hc.gettest();
+            Itest it=hc.gettest();
 
 //            Integer hitsCount =
 //                    (Integer)application.getAttribute("hitCounter");
@@ -414,21 +215,20 @@
             application.setAttribute("hitCounter", hitsCount);
 
         %>
-        <p>页面访问量为: <%= hitsCount%></p>
 
         <div class="fh5co-counters" style="background-image: url(images/hero.jpg);" data-stellar-background-ratio="0.5" id="counter-animate">
             <div class="fh5co-narrow-content animate-box">
                 <div class="row" >
                     <div class="col-md-4 text-center">
-                        <span class="fh5co-counter js-counter" data-from="0" data-to="4" data-speed="5000" data-refresh-interval="50"></span>
-                        <span class="fh5co-counter-label">Designer</span>
+                        <span class="fh5co-counter js-counter" data-from="0" data-to="101" data-speed="2000" data-refresh-interval="50"></span>
+                        <span class="fh5co-counter-label">Design Times</span>
                     </div>
                     <div class="col-md-4 text-center">
                         <span class="fh5co-counter js-counter" data-from="0" data-to=<%= hitsCount%> data-speed="2000" data-refresh-interval="50"></span>
                         <span class="fh5co-counter-label"> view counter</span>
                     </div>
                     <div class="col-md-4 text-center">
-                        <span class="fh5co-counter js-counter" data-from="0" data-to="27232" data-speed="5000" data-refresh-interval="50"></span>
+                        <span class="fh5co-counter js-counter" data-from="0" data-to="27232" data-speed="2000" data-refresh-interval="50"></span>
                         <span class="fh5co-counter-label">Line of Codes</span>
                     </div>
                 </div>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="2017-6-11" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>data.Meeting</class><class>data.VisitNum</class><class>data.Department</class><class>data.Administrator</class><class>data.DepartmentRelationStaff</class><class>data.User</class><class>data.MeetingRelationStaff</class><class>data.MeetingRoom</class><class>data.Employee</class><class>data.UserId</class><class>data.DepartmentRelationStaffId</class><class>data.MeetingRelationStaffId</class><class>data.EmployeeCopy</class><properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://172.18.5.127:3306/meetingroom"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value="123456"/>
+			<property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider"/>    
+	       <!-- 最小连接数 -->    
+	       <property name="c3p0.min_size" value="5"/>     
+	       <!-- 最大连接数 -->     
+	       <property name="c3p0.max_size" value="300"/>    
+	       <!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->     
+	       <property name="c3p0.maxIdleTime" value="6"/>    
+	       <!-- 获得连接的超时时间,如果超过这个时间,会抛出异常，单位毫秒 -->    
+	       <property name="c3p0.timeout" value="1400"/>     
+	       <!-- 最大的PreparedStatement的数量 -->    
+	       <property name="c3p0.max_statements" value="300"/>    
+	       <!-- 每隔120秒检查连接池里的空闲连接 ，单位是秒-->    
+	       <property name="c3p0.idle_test_period" value="30"/>      
+	       <!-- 当连接池里面的连接用完的时候，C3P0一下获取的新的连接数 -->    
+	       <property name="c3p0.acquire_increment" value="10"/>    
+	       <!-- 是否每次都验证连接是否可用 -->    
+	       <property name="c3p0.validate" value="false"/>    
+		</properties>
+	</persistence-unit>
+</persistence>
