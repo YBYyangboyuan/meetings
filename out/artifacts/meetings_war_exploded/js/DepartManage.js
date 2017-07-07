@@ -2,7 +2,6 @@ var nowname;
 var id = 0;
 var depart;
 $(document).ready(function () {
-    alert(1);
     $.ajax({
         type: "POST",
         url: "jsp/ShowAllDepartment.jsp",

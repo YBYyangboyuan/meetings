@@ -1,32 +1,16 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ page import="net.sf.json.JSONObject" %>
+<%@ page import="java.net.URLDecoder" %>
+<%@ page import="java.io.*,java.util.*" %>
+<%@ page import="com.HelloClient" %>
+<%@ page import="com.Itest" %>
+<%@ page import="java.rmi.RemoteException" %>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>个人</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co"/>
-    <meta name="keywords"
-          content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"/>
-    <meta name="author" content="FreeHTML5.co"/>
-
-
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content=""/>
-    <meta property="og:image" content=""/>
-    <meta property="og:url" content=""/>
-    <meta property="og:site_name" content=""/>
-    <meta property="og:description" content=""/>
-    <meta name="twitter:title" content=""/>
-    <meta name="twitter:image" content=""/>
-    <meta name="twitter:url" content=""/>
-    <meta name="twitter:card" content=""/>
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!--<link rel="shortcut icon" href="favicon.ico">-->
-
-    <!--<<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic,700' rel='stylesheet' type='text/css'>-->
-    <!--<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>Meeting</title>
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="css/animate.css">
@@ -59,29 +43,53 @@
 
     <script src="js/NewNoti.js"></script>
 
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
+
 </head>
 <body>
+
+
+<%!
+    JSONObject jsonObject;
+    String name="";
+    String level="";
+
+%>
+<%
+    Cookie[] cookies=request.getCookies();
+    if (cookies!=null){
+        for (Cookie cookie:cookies){
+            if (cookie.getName().equals("mes")){
+//                JSONObject jsonObject= JSONObject.fromObject(cookie.getValue());
+                JSONObject jsonObject= JSONObject.fromObject(URLDecoder.decode(cookie.getValue(),"utf-8"));
+                name= URLDecoder.decode(jsonObject.getString("name"),"UTF-8");
+                System.out.println("nameok"+jsonObject.toString());
+                level=jsonObject.getString("level");
+            }
+        }
+    }
+%>
+
 
 <div id="fh5co-page">
     <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-        <h1 id="fh5co-logo"><a href="person.html"><img src="images/logo3.png"
+        <h1 id="fh5co-logo"><a href="counter.jsp"><img src="images/logo3.png"
                                                        alt="Free HTML5 Bootstrap Website Template"></a></h1>
         <nav id="fh5co-main-menu" role="navigation">
             <ul>
-                <li><a href="person.html">个人中心</a></li>
-                <li><a href="employee.html">人员管理</a></li>
-                <li><a href="booking.html">会议预定</a></li>
+                <li><a href="counter.jsp">个人中心</a></li>
+                <li id="one"><a href="employee.html">人员管理</a></li>
+                <li id="two"><a href="booking.html">会议预定</a></li>
             </ul>
         </nav>
 
         <div class="fh5co-footer">
-            <p>
-                <small>&copy; 2016 Nitro Free HTML5. All Rights Reserved.</span> <span>Designed by <a
-                        href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a
-                        href="http://unsplash.com/" target="_blank">Unsplash</a></span></small>
-            </p>
+            <p><small>&copy; 2017.06-07</span> <span>Designed by group24 </span> <span>Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></span></small></p>
+
             <ul>
                 <li><a href="#"><i class="icon-facebook"></i></a></li>
                 <li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -91,6 +99,17 @@
         </div>
 
     </aside>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var lev=<%=level%>;
+        if(lev=="2"){
+        }
+        else{
+            $('#one').hide();
+            $('#two').hide();
+        }
+    </script>
+
 
 
     <div class="container" style="padding-left: 215px">
@@ -278,7 +297,7 @@
         <div class="col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0">
 
             <div class="col-md-4 col-sm-4 col-xs-4 text-center">
-                <a href="person.html"><i class="icon ion-arrow-left-c"></i> <span>Previous </span></a>
+                <a href="counter.jsp"><i class="icon ion-arrow-left-c"></i> <span>Previous </span></a>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4 text-center">
                 <a href="#"><i class="icon ion-ionic"></i></a>

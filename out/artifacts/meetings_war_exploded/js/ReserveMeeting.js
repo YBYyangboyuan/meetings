@@ -22,6 +22,7 @@ function myblur() {
                 success: function (data) {
                     $('#meetingroonnames').empty();
                     $.each(data, function (i) {
+
                         $('#meetingroonnames').append("<option value=" + data[i].meetingRoomId + ">" + data[i].meetingRoomName + "</option>");
                     });
                     $('#meetingroonnames').selectpicker('refresh');

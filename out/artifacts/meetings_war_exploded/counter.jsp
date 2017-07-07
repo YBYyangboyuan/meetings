@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ page import="net.sf.json.JSONObject" %>
+<%@ page import="java.net.URLDecoder" %>
 <%@ page import="java.io.*,java.util.*" %>
 <%@ page import="com.HelloClient" %>
 <%@ page import="com.Itest" %>
@@ -9,29 +11,8 @@
 <head>
     <meta charset="utf-8">
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-    <title>meetings</title>
+    <title>Meeting</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />-->
-    <!--<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />-->
-    <!--<meta name="author" content="FreeHTML5.co" />-->
-
-
-    <!--&lt;!&ndash; Facebook and Twitter integration &ndash;&gt;-->
-    <!--<meta property="og:title" content=""/>-->
-    <!--<meta property="og:image" content=""/>-->
-    <!--<meta property="og:url" content=""/>-->
-    <!--<meta property="og:site_name" content=""/>-->
-    <!--<meta property="og:description" content=""/>-->
-    <!--<meta name="twitter:title" content="" />-->
-    <!--<meta name="twitter:image" content="" />-->
-    <!--<meta name="twitter:url" content="" />-->
-    <!--<meta name="twitter:card" content="" />-->
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!--<link rel="shortcut icon" href="favicon.ico">-->
-
-    <!--<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic,700' rel='stylesheet' type='text/css'>-->
-    <!--<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="css/animate.css">
@@ -51,25 +32,58 @@
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery.min.js"></script>
+
+
+
+
+
 
 </head>
 <body>
+
+<%!
+    JSONObject jsonObject;
+    String name="";
+    String level="";
+
+%>
+<%
+    Cookie[] cookies=request.getCookies();
+    if (cookies!=null){
+        for (Cookie cookie:cookies){
+            if (cookie.getName().equals("mes")){
+//                JSONObject jsonObject= JSONObject.fromObject(cookie.getValue());
+                JSONObject jsonObject= JSONObject.fromObject(URLDecoder.decode(cookie.getValue(),"utf-8"));
+                name= URLDecoder.decode(jsonObject.getString("name"),"UTF-8");
+                System.out.println("nameok"+jsonObject.toString());
+                level=jsonObject.getString("level");
+            }
+        }
+    }
+%>
+
 <div id="fh5co-page">
     <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-        <h1 id="fh5co-logo"><a href="person.html"><img src="images/logo3.png" alt="Free HTML5 Bootstrap Website Template"></a></h1>
+        <h1 id="fh5co-logo"><a href="counter.jsp"><img src="images/logo3.png" alt="Free HTML5 Bootstrap Website Template"></a></h1>
         <nav id="fh5co-main-menu" role="navigation">
             <ul>
-                <li class="fh5co-active"><a href="person.html">个人中心</a></li>
-                <li><a href="employee.html">人员管理</a></li>
-                <li><a href="booking.html">会议预定</a></li>
+                <li class="fh5co-active"><a href="counter.jsp">个人中心</a></li>
+                <li id="one"><a href="employee.html">人员管理</a></li>
+                <li id="two"><a href="booking.html">会议预定</a></li>
+                <li><a href="index.jsp?action=Logout">注销账号</a></li>
             </ul>
         </nav>
 
         <div class="fh5co-footer">
             <p><small>&copy; 2017.06-07</span> <span>Designed by group24 </span> <span>Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></span></small></p>
-            <%--<p><small>&copy; 2017.06-07</span> <span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></span></small></p>--%>
 
             <ul>
                 <li><a href="#"><i class="icon-facebook"></i></a></li>
@@ -80,21 +94,32 @@
         </div>
 
     </aside>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var lev=<%=level%>;
+        if(lev=="2"){
+        }
+        else{
+            $('#one').hide();
+            $('#two').hide();
+        }
+    </script>
 
     <div id="fh5co-main">
+
 
         <div class="fh5co-narrow-content">
             <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">个人中心</h2>
             <div class="row animate-box" data-animate-effect="fadeInLeft">
                 <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 work-item">
-                    <a href="NewNoti.html">
+                    <a href="NewNoti.jsp">
                         <img src="images/work_1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
                         <h3 class="fh5co-work-title">最新通知</h3>
                         <p>give you last info</p>
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 work-item">
-                    <a href="MyResver.html">
+                    <a href="MyResver.jsp">
                         <img src="images/work_2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
                         <h3 class="fh5co-work-title">我的预定</h3>
                         <p>check where </p>
@@ -102,7 +127,7 @@
                 </div>
                 <div class="clearfix visible-sm-block"></div>
                 <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 work-item">
-                    <a href="MyMeeting.html">
+                    <a href="MyMeeting.jsp">
                         <img src="images/work_3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
                         <h3 class="fh5co-work-title">我的会议</h3>
                         <p>choose what you like</p>
@@ -115,83 +140,7 @@
         </div>
 
 
-        <!--<div class="fh5co-testimonial" >-->
-        <!--<div class="fh5co-narrow-content">-->
-        <!--<div class="owl-carousel-fullwidth animate-box" data-animate-effect="fadeInLeft">-->
-        <!--<div class="item">-->
-        <!--<figure>-->
-        <!--<img src="images/testimonial_person2.jpg" alt="Free HTML5 Bootstrap Template">-->
-        <!--</figure>-->
-        <!--<p class="text-center quote">&ldquo;Design must be functional and functionality must be translated into visual aesthetics, without any reliance on gimmicks that have to be explained. &rdquo; <cite class="author">&mdash; Ferdinand A. Porsche</cite></p>-->
-        <!--</div>-->
-        <!--<div class="item">-->
-        <!--<figure>-->
-        <!--<img src="images/testimonial_person3.jpg" alt="Free HTML5 Bootstrap Template">-->
-        <!--</figure>-->
-        <!--<p class="text-center quote">&ldquo;Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn’t really do it, they just saw something. It seemed obvious to them after a while. &rdquo;<cite class="author">&mdash; Steve Jobs</cite></p>-->
-        <!--</div>-->
-        <!--<div class="item">-->
-        <!--<figure>-->
-        <!--<img src="images/testimonial_person4.jpg" alt="Free HTML5 Bootstrap Template">-->
-        <!--</figure>-->
-        <!--<p class="text-center quote">&ldquo;I think design would be better if designers were much more skeptical about its applications. If you believe in the potency of your craft, where you choose to dole it out is not something to take lightly. &rdquo;<cite class="author">&mdash; Frank Chimero</cite></p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
 
-
-        <!--<div class="fh5co-narrow-content">-->
-        <!--<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">This Is What <span>We Love To Do</span></h2>-->
-        <!--<div class="row">-->
-        <!--<div class="col-md-6">-->
-        <!--<div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">-->
-        <!--<div class="fh5co-icon">-->
-        <!--<i class="icon-strategy"></i>-->
-        <!--</div>-->
-        <!--<div class="fh5co-text">-->
-        <!--<h3>Strategy</h3>-->
-        <!--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-md-6">-->
-        <!--<div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">-->
-        <!--<div class="fh5co-icon">-->
-        <!--<i class="icon-telescope"></i>-->
-        <!--</div>-->
-        <!--<div class="fh5co-text">-->
-        <!--<h3>Explore</h3>-->
-        <!--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="col-md-6">-->
-        <!--<div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">-->
-        <!--<div class="fh5co-icon">-->
-        <!--<i class="icon-circle-compass"></i>-->
-        <!--</div>-->
-        <!--<div class="fh5co-text">-->
-        <!--<h3>Direction</h3>-->
-        <!--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-md-6">-->
-        <!--<div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">-->
-        <!--<div class="fh5co-icon">-->
-        <!--<i class="icon-tools-2"></i>-->
-        <!--</div>-->
-        <!--<div class="fh5co-text">-->
-        <!--<h3>Expertise</h3>-->
-        <!--<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-
-        <!--</div>-->
-        <!--</div>-->
         <%
             HelloClient hc = new HelloClient();
             hc.gettest();
@@ -280,6 +229,7 @@
         <!--</div>-->
         <!--</div>-->
 
+
     </div>
 </div>
 
@@ -301,6 +251,8 @@
 
 <!-- MAIN JS -->
 <script src="js/main.js"></script>
+
+
 
 </body>
 </html>
